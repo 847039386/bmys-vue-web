@@ -100,7 +100,7 @@
             links : [
                {title :'上传视频' , link :'/video_upload' ,icon :'upload' ,type:'info'},
                {title :'添加标签' , link :'/tag' ,icon :'pricetags' ,type:'success'},
-               {title :'查看视频' , link :'/video' ,icon :'film-marker' ,type:'error'},
+               {title :'查看视频' , link :'/video_select' ,icon :'film-marker' ,type:'error'},
                {title :'查看反馈' , link :'/admin_msg' ,icon :'email' ,type:'warning'}
             ],
             admin_msg : [],
