@@ -40,7 +40,7 @@ export default {
    },
    methods:{
      randomImg(){
-       let path = this.$store.state.host + '/upload/avatar/' + parseInt(Math.random()*5+1) + '.jpg'
+       let path = this.$store.state.host + '/images/' + parseInt(Math.random()*7+1) + '.jpg'
        return path
      },
      async getComment(page){

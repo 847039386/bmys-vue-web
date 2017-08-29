@@ -1,13 +1,16 @@
 import Sidebar from '@/components/common/Sidebar'
-import Login from '@/components/page/admin/Login'
-import Home from '@/components/page/admin/Home'
-import Video from '@/components/page/admin/video'
-import Admin_msg from '@/components/page/admin/admin_msg'
-import api_Tmp from '@/components/page/admin/api'
-import Upload_video from '@/components/page/admin/upload_video'
-import Create_video from '@/components/page/admin/create_video'
-import Tag from '@/components/page/admin/tag'
-import Setting from '@/components/page/admin/setting'
+import Login from '@/components/page/admin/Login/login'
+import Home from '@/components/page/admin/Home/home'
+import Admin_msg from '@/components/page/admin/admin_msg/admin_msg'
+import api_Tmp from '@/components/page/admin/Api/api'
+import Video_upload from '@/components/page/admin/video/upload/upload'
+import Video_save from '@/components/page/admin/video/save/save'
+import Video_details from '@/components/page/admin/video/details/details'
+import Video_select from '@/components/page/admin/video/select/select'
+import Tag from '@/components/page/admin/Tag/tag'
+import Setting from '@/components/page/admin/setting/setting'
+
+
 
 
 import Index from '@/components/page'
@@ -53,11 +56,6 @@ export default [
             name :"Home"
         },
         {
-            path: '/video',
-            component: Video,
-            name :"Video"
-        },
-        {
             path: '/api',
             component: api_Tmp,
             name :"api_Tmp"
@@ -68,14 +66,24 @@ export default [
             name :"Admin_msg"
         },
         {
-          path: '/upload_video',
-          component: Upload_video,
-          name :"upload_video"
+            path: '/video_select',
+            component: Video_select,
+            name :"video_select"
         },
         {
-          path: '/create_video',
-          component: Create_video,
-          name :"create_video"
+          path: '/video_upload',
+          component: Video_upload,
+          name :"video_upload"
+        },
+        {
+          path: '/video_save',
+          component: Video_save,
+          name :"video_save"
+        },
+        {
+          path: '/video_details',
+          component: Video_details,
+          name :"video_details"
         },
         {
           path: '/tag',

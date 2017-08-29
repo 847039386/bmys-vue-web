@@ -73,7 +73,7 @@ export default {
 
 <style>
   .video_box{ overflow: hidden;}
-  .video_box .video { width: 670px; background: red; float: left;}
+  .video_box .video { width: 670px; float: left; padding: 0;}
   .video_box .video_list { width: 290px; background: red; float: left;  height: 540px; background: #222; color: #fff; }
   .video_box .video_list .video_top{ padding: 20px 10px; height: 540px; hoverflow-x: hidden;}
   .video_box .video_list .video_top p{margin-bottom: 8px;}

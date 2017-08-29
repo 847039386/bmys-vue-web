@@ -70,7 +70,7 @@
                             <Card class="m_5 backg" style="padding:2px; margin:5px;">
                               <span class="yc"><Icon type="ios-film"></Icon>&nbsp;&nbsp;{{a.name}}</span>
                               <Progress :percent="a.percentage" :stroke-width="5"></Progress>
-                              <Button type="primary" size="small" @click="$store.commit('router',{ path:'/create_video', query :{ type :'create' ,url : a.url,vcurl_id :a.vcurl_id } })">添加数据</Button>
+                              <Button type="primary" size="small" @click="$store.commit('router',{ path:'/video_save', query :{ type :'create' ,url : a.url,vcurl_id :a.vcurl_id } })">添加数据</Button>
                               <Button type="primary" size="small" @click="$store.commit('delProgress',i)">放到后台</Button>
                             </Card>
                         </Col>
@@ -80,7 +80,7 @@
               <Col span="24">
                 <Card class="backg">
                   <p slot="title">电视剧数据表</p>
-                  <p slot="extra"><Button size="small" shape="circle" icon="plus-round" type="error" @click="$store.commit('router',{ path:'/video'})">更多</Button></p>
+                  <p slot="extra"><Button size="small" shape="circle" icon="plus-round" type="error" @click="$store.commit('router',{ path:'/video_select'})">更多</Button></p>
                   <Table size="small" border :columns="Video.columns" :data="Video.datas"></Table>
                 </Card>
               </Col>
@@ -92,19 +92,16 @@
 </template>
 
 <script>
-    import Video from  '@/testJson/video.js'       //测试数据的 电影表
-    import Admin_msg from  '@/testJson/admin_msg.js'
-    import ruku from  '@/util/ruku.js'
-
+    import ThisJS from './';
     export default {
        data :function(){
          return {
             iboxs : [ ],
             links : [
-               {title :'上传视频' , link :'/upload_video' ,icon :'upload' ,type:'info'},
+               {title :'上传视频' , link :'/video_upload' ,icon :'upload' ,type:'info'},
                {title :'添加标签' , link :'/tag' ,icon :'pricetags' ,type:'success'},
                {title :'查看视频' , link :'/video' ,icon :'film-marker' ,type:'error'},
-               {title :'查看反馈' , link :'/upload_video' ,icon :'email' ,type:'warning'}
+               {title :'查看反馈' , link :'/admin_msg' ,icon :'email' ,type:'warning'}
             ],
             admin_msg : [],
             Video : { columns :[
@@ -115,30 +112,7 @@
             admin_log : []
          }
        },
-       methods: {
-            remove (index) {
-              let title = '删除确认';
-              let width = 360;
-              let content = '点击删除时，该条数据将从数据库移除！';
-              let okText = "删除";
-              let cancelText = '取消';
-              this.$Modal.confirm({ title ,  width ,content ,okText ,cancelText
-                  ,onOk : () => { this.Video.datas.splice(index, 1); }
-              })
-            },
-            toRouter(path){
-              this.$router.push(path);
-            }
-        },
-        async created(){
-          let admin_msg = await ruku.get(this.$store.state.host + '/feedbackMsg')
-          let Video_data = await ruku.getVideos({url :this.$store.state.host + '/videos' ,query :{limit :5 ,page :1}})
-          this.Video.datas = Video_data.data //电影信息
-          this.admin_msg = admin_msg;
-          this.iboxs.push({title :'文章数' ,num :Video_data.count})
-
-
-        }
+       created :ThisJS.created
     }
 
 </script>

@@ -79,7 +79,7 @@
                 Menus : [
                    { title :"主页" ,icon :'home' ,child : [] ,index :'home' },
                    { title :"消息" ,icon :'chatbox-working' ,child : [{title :"邮件" ,index :'admin_msg'}]},
-                   { title :"视频" ,icon :'android-film' ,child : [{title :"视频管理" ,index :'video'},{title :"添加标签" ,index :'tag'},{title :'上传视频' ,index :'upload_video'} ]},
+                   { title :"视频" ,icon :'android-film' ,child : [{title :"视频管理" ,index :'video_select'},{title :"添加标签" ,index :'tag'},{title :'上传视频' ,index :'video_upload'} ]},
                    { title :"系统" ,icon :'settings' ,child : [{title :"设置" ,index :'setting'},{title :"Api" ,index :'api'}]},
                 ]
             }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Alert show-icon v-html="msg" >{{msg}}</Alert>
-    <x-video v-for="video in videos" :key="'iv'+video._id" :title="video.title" :img="video.thumb_url" :tags="video.tags" :desc="video.digest" :createAt="video.create_at"></x-video>
+    <x-video v-for="video in videos" :key="'iv'+video._id" :id="video._id" :title="video.title" :img="video.thumb_url" :tags="video.tags" :desc="video.digest" :createAt="video.create_at"></x-video>
     <Page v-if="videos.length > 0 && limit < total" class-name="page_lz" :total="total" size="small" :page-size="limit" @on-change="pageTurning" show-total></Page>
   </div>
 </template>

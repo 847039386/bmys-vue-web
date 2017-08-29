@@ -4,7 +4,7 @@ let datas = [
   { title :'鬼吹灯之牧野诡事' ,tags :' 悬疑剧 / 自制剧 / 网络剧' ,digest :'简介：《鬼吹灯之牧野诡事》导，王大陆、金厉、王耀、小金牙进入千年古墓寻找胡天父母下落时发生的事。',create_at :'2017-8-20'},
 ]
 
-let columns = function(self){
+let columns = function(){
   return [
     { title: '电影名' ,key: 'title' ,"width": 200 ,align: 'center'},
     { title: '标签' ,key: 'tag_g' ,"width": 250 ,align: 'center'},
@@ -23,7 +23,7 @@ let columns = function(self){
                         },
                         on: {
                             click: () => {
-                                // self.show(params.index)
+                                this.findVideo(params)
                             }
                         }
                     }),
@@ -38,7 +38,7 @@ let columns = function(self){
                         },
                         on: {
                             click: () => {
-                                self.updateVideo(params)
+                                this.updateVideo(params)
                             }
                         }
                     }),
@@ -50,7 +50,7 @@ let columns = function(self){
                         },
                         on: {
                             click: () => {
-                                self.remove(params)
+                                this.remove(params)
                             }
                         }
                     })
