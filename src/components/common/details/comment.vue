@@ -47,7 +47,7 @@ export default {
        let comments;
        comments = await ruku.get({url :this.$store.state.host + '/getComment',query :{ video_id:this.$route.query.id ,limit :5 ,page :page} });
        if(comments.success){
-         if(comments.count == 0){
+         if(comments.count == 0 || comments.count <= comments.limitPage){
            this.more = false;
            this.n_more = true;
          }
