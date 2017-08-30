@@ -3,24 +3,17 @@ import ruku from '@/util/ruku.js';
 export default {
   methods: {
     remove (index) {
-      let title = '删除确认';
-      let width = 360;
-      let content = '点击删除时，该条数据将从数据库移除！';
-      let okText = "删除";
-      let cancelText = '取消';
+      let title = '删除确认',
+          width = 360,
+          content = '点击删除时，该条数据将从数据库移除！',
+          okText = "删除",
+          cancelText = '取消';
       this.$Modal.confirm({ title ,  width ,content ,okText ,cancelText
           ,onOk : () => { this.cache_video.datas.splice(index, 1); }
       })
     },
     beforeUpload(file){
-      let info;
-      this.$store.commit('ModelPermission',"上传")
-      this.$store.commit('verifyAdmin',["token","permissions"])
-      info = this.$store.state.admin.verifyErrorInfo  ;
-      if(info){
-        this.$Notice.error(info);
-      }
-      return !info;
+      return true;    //false 则不上传。
     },
     onProgress(event, file, fileList){
         fileList.forEach((item,index) => {

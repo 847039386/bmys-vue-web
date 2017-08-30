@@ -18,7 +18,7 @@ import PHome from '@/components/page/public/Home'
 import Find from '@/components/page/public/Find'
 import Details from '@/components/page/public/details'
 
-
+import middlewares from './middlewares'
 
 export default [
 
@@ -49,51 +49,61 @@ export default [
         {
             path: '/',
             component: Home,
+            beforeEnter : middlewares.auth()
         },
         {
             path: '/home',
             component: Home,
-            name :"Home"
+            name :"Home",
+            beforeEnter : middlewares.auth()
         },
         {
             path: '/api',
             component: api_Tmp,
-            name :"api_Tmp"
+            name :"api_Tmp",
+            beforeEnter : middlewares.auth()
         },
         {
             path: '/admin_msg',
             component: Admin_msg,
-            name :"Admin_msg"
+            name :"Admin_msg",
+            beforeEnter : middlewares.auth()
         },
         {
             path: '/video_select',
             component: Video_select,
-            name :"video_select"
+            name :"video_select",
+            beforeEnter : middlewares.auth()
         },
         {
           path: '/video_upload',
           component: Video_upload,
-          name :"video_upload"
+          name :"video_upload",
+          beforeEnter : middlewares.auth()
         },
         {
           path: '/video_save',
           component: Video_save,
-          name :"video_save"
+          name :"video_save",
+          beforeEnter : middlewares.auth()
         },
         {
           path: '/video_details',
           component: Video_details,
-          name :"video_details"
+          name :"video_details",
+          beforeEnter : middlewares.auth()
         },
         {
           path: '/tag',
           component: Tag,
-          name :"tag"
+          name :"tag",
+          beforeEnter : middlewares.auth()
         },
         {
           path: '/setting',
           component: Setting,
-          name :"setting"
+          name :"setting",
+          beforeEnter : middlewares.auth()
         }
     ]
   },

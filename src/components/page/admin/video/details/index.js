@@ -16,36 +16,31 @@ export default {
       this.select_comments = value;
     },
     async removeComments(){
-      this.$store.commit('verifyAdmin',["token","permissions"])
       let comments = [],
-      err_info = this.$store.state.admin.verifyErrorInfo
-      if(err_info){
-        this.$Notice.warning(err_info);
-      }else{
-        let title = '删除确认';
-        let width = 360;
-        let content = '点击删除时，该条数据将从数据库移除！';
-        let okText = "删除";
-        let cancelText = '取消';
-        this.$Modal.confirm({ title ,  width ,content ,okText ,cancelText
-            ,onOk :async () => {
-              this.select_comments.forEach(item =>{
-                comments.push(item._id)
-              })
-              if(comments.length > 0){
-                let request = await ruku.post({url:this.removeComments_url, query:{token :this.$store.state.admin.token ,id :comments} })
-                if(request.success){
-                  this.$Notice.success({ title :'评论操作' ,desc :'评论删除成功！'});
-                  await this.pageTurning(1)
-                }else{
-                  this.$Notice.error({ title :'评论操作' ,desc :'评论删除失败！原因可能是' + request.msg});
-                }
+          title = '删除确认',
+          width = 360,
+          content = '点击删除时，该条数据将从数据库移除！',
+          okText = "删除",
+          cancelText = '取消';
+      this.$Modal.confirm({ title ,  width ,content ,okText ,cancelText
+          ,onOk :async () => {
+            this.select_comments.forEach(item =>{
+              comments.push(item._id)
+            })
+            if(comments.length > 0){
+              let request = await ruku.post({url:this.removeComments_url, query:{token :this.$store.state.admin.token ,id :comments} })
+              if(request.success){
+                this.$Notice.success({ title :'评论操作' ,desc :'评论删除成功！'});
+                this.select_comments = [];
+                await this.pageTurning(1)
               }else{
-                this.$Notice.error({ title :'评论操作' ,desc :'并没有选中单位，请选中要删除的对象。'});
+                this.$Notice.error({ title :'评论操作' ,desc :'评论删除失败！原因可能是' + request.msg});
               }
+            }else{
+              this.$Notice.error({ title :'评论操作' ,desc :'并没有选中单位，请选中要删除的对象。'});
             }
-        })
-      }
+          }
+      })
     }
   },
   async created(){

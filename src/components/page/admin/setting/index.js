@@ -17,16 +17,9 @@ export default {
       }
   },
   async created(){
-    let err_info;
-    this.$store.commit('verifyAdmin',["token","permissions"])
-    err_info = this.$store.state.admin.verifyErrorInfo
-    if(!err_info){
-      let setting = await ruku.get({url :this.$store.state.host + '/admin/setting/getWeb' ,query :{ token :this.$store.state.admin.token }})
-      if(setting.success){
-        this.formSetting = setting.data
-      }
-    }else{
-      this.$Notice.warning(err_info);
+    let setting = await ruku.get({url :this.$store.state.host + '/admin/setting/getWeb' ,query :{ token :this.$store.state.admin.token }})
+    if(setting.success){
+      this.formSetting = setting.data
     }
   }
 }

@@ -4,61 +4,49 @@ export default {
       this.VideoValidate.select_tag = newTargetKeys;
     },
     async createVideo(){
-      let err_info ,request ,vcurl_id;
+      let request ,vcurl_id;
       vcurl_id = this.$route.query.vcurl_id;
         if(this.success){
-          this.$store.commit('verifyAdmin',["token","permissions"])
-          err_info = this.$store.state.admin.verifyErrorInfo
-          if(!err_info){
-            request = await this.$http.post(this.addVideo_url,{ token :this.$store.state.admin.token ,title :this.VideoValidate.title ,digest :this.VideoValidate.desc ,tags :this.VideoValidate.select_tag ,url :this.VideoValidate.url ,vcurl_id :vcurl_id ,thumb_url :this.VideoValidate.thumb_url})
-            this.$store.commit('reqIsSuccess',{
-              state : request.data.success,
-              success :{
-                 info : {title :'成功' ,desc :`添加视频${this.VideoValidate.title}成功。`},
-                 callback :() =>{
-                   this.$store.state.uploads.forEach((item ,index) => {
-                     if(item.url == this.$route.query.url)
-                     this.$store.state.uploads.splice(index,1);
-                   })
-                   this.$refs['VideoValidate'].resetFields();
-                   this.$store.commit('router',{ path:'/home'})
-                 }
-              },
-              error :{
-                info :{title :'错误' ,desc :'因为某种原因，该数据添加出现错误。'},
-              }
-            })
-          }else{
-            this.$Notice.warning(err_info);
-          }
+          request = await this.$http.post(this.addVideo_url,{ token :this.$store.state.admin.token ,title :this.VideoValidate.title ,digest :this.VideoValidate.desc ,tags :this.VideoValidate.select_tag ,url :this.VideoValidate.url ,vcurl_id :vcurl_id ,thumb_url :this.VideoValidate.thumb_url})
+          this.$store.commit('reqIsSuccess',{
+            state : request.data.success,
+            success :{
+               info : {title :'成功' ,desc :`添加视频${this.VideoValidate.title}成功。`},
+               callback :() =>{
+                 this.$store.state.uploads.forEach((item ,index) => {
+                   if(item.url == this.$route.query.url)
+                   this.$store.state.uploads.splice(index,1);
+                 })
+                 this.$refs['VideoValidate'].resetFields();
+                 this.$store.commit('router',{ path:'/home'})
+               }
+            },
+            error :{
+              info :{title :'错误' ,desc :'因为某种原因，该数据添加出现错误。'},
+            }
+          })
         }else{
           this.$Notice.error({title :'拒绝操作' ,desc :'出于某种风险原因，服务器拒绝该操作。'});
         }
     },
     async updateVideo(){
-      let err_info ,request ,vcurl_id;
+      let request ,vcurl_id;
       vcurl_id = this.$route.query.vcurl_id;
         if(this.success){
-          this.$store.commit('verifyAdmin',["token","permissions"])
-          err_info = this.$store.state.admin.verifyErrorInfo
-          if(!err_info){
-            request = await this.$http.post(this.updateVideo_url,{id :this.VideoValidate._id, token :this.$store.state.admin.token ,title :this.VideoValidate.title ,digest :this.VideoValidate.desc ,tags :this.VideoValidate.select_tag ,url :this.VideoValidate.url ,vcurl_id :vcurl_id ,thumb_url :this.VideoValidate.thumb_url})
-            this.$store.commit('reqIsSuccess',{
-              state : request.data.success,
-              success :{
-                 info : {title :'成功' ,desc :`修改视频${this.VideoValidate.title}成功。`},
-                 callback :() =>{
-                   this.$refs['VideoValidate'].resetFields();
-                   this.$store.commit('router',{ path:'/home'})
-                 }
-              },
-              error :{
-                info :{title :'错误' ,desc :'因为某种原因，修改数据出现错误。'},
-              }
-            })
-          }else{
-            this.$Notice.warning(err_info);
-          }
+          request = await this.$http.post(this.updateVideo_url,{id :this.VideoValidate._id, token :this.$store.state.admin.token ,title :this.VideoValidate.title ,digest :this.VideoValidate.desc ,tags :this.VideoValidate.select_tag ,url :this.VideoValidate.url ,vcurl_id :vcurl_id ,thumb_url :this.VideoValidate.thumb_url})
+          this.$store.commit('reqIsSuccess',{
+            state : request.data.success,
+            success :{
+               info : {title :'成功' ,desc :`修改视频${this.VideoValidate.title}成功。`},
+               callback :() =>{
+                 this.$refs['VideoValidate'].resetFields();
+                 this.$store.commit('router',{ path:'/home'})
+               }
+            },
+            error :{
+              info :{title :'错误' ,desc :'因为某种原因，修改数据出现错误。'},
+            }
+          })
         }else{
           this.$Notice.error({title :'拒绝操作' ,desc :'出于某种风险原因，服务器拒绝该操作。'});
         }

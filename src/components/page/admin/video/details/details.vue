@@ -15,10 +15,10 @@
           <p></p>
         </Col>
     </Row>
-    <div v-if="Comments.datas.length > 0" class="comment">
+    <div class="comment">
       <Table  size="small" border :columns="Comments.columns" :data="Comments.datas" @on-selection-change="selectComments"></Table>
-      <Button size="small" type="error" @click="removeComments()" style=" margin-top:5px;">删除</Button>
-      <Page class-name="page_lz" :total="total" size="small" @on-change="pageTurning" @on-page-size-change="updateLimit" show-total show-sizer show-elevator></Page>
+      <Button  v-if="Comments.datas.length > 0"  size="small" type="error" @click="removeComments()" style=" margin-top:5px;">删除</Button>
+      <Page  v-if="Comments.datas.length > 0"  class-name="page_lz" :total="total" size="small" @on-change="pageTurning" @on-page-size-change="updateLimit" show-total show-sizer show-elevator></Page>
     </div>
   </div>
 </template>
