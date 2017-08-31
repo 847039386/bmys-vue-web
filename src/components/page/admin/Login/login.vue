@@ -6,7 +6,7 @@
               <Input v-model="formUser.username" placeholder="请输入用户名"></Input>
           </Form-item>
           <Form-item label="密码" prop="password">
-              <Input v-model="formUser.password" placeholder="请输入密码"></Input>
+              <Input v-model="formUser.password" type="password" placeholder="请输入密码"></Input>
           </Form-item>
           <Form-item>
               <Button type="primary" @click="handleSubmit('formUser')">提交</Button>

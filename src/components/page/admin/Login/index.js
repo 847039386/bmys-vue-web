@@ -1,10 +1,11 @@
+import md5 from 'md5'
 export default {
   methods: {
       handleSubmit(formName) {
           this.$refs[formName].validate(async (valid) => {
               if (valid) {
                   try {
-                    let info = await this.$http.post(this.login_url,{ username :this.formUser.username ,password :this.formUser.password })
+                    let info = await this.$http.post(this.login_url,{ username :this.formUser.username ,password :md5(this.formUser.password) })
                     if(info.data.success){
                        this.$store.state.admin.token = info.data.data.token
                        this.$store.state.admin.token_time = info.data.data.token_time
