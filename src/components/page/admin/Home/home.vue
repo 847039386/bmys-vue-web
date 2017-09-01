@@ -58,7 +58,7 @@
               <Col v-if="$store.state.new_uploads.length > 0 || $store.state.uploads.length > 0" span="24">
                 <Card class="m_30" >
                   <p slot="title">上传的文件</p>
-                  <p slot="extra"><router-link to="/upload_video" tag="div"><Button size="small" shape="circle" icon="plus-round" type="error">更多</Button></router-link></p>
+                  <p slot="extra"><router-link to="/video_upload" tag="div"><Button size="small" shape="circle" icon="plus-round" type="error">更多</Button></router-link></p>
                   <Row :gutter="16">
                         <Col span="12" v-for="(a,i) in $store.state.new_uploads" :key="'new_uploads'+i" >
                           <Card class="m_5 backg" style="padding:2px; margin:5px;">
