@@ -20,6 +20,7 @@
 
 <script type="text/javascript">
 import ruku from  '@/util/ruku.js'
+import { dealPath } from '@/util/util'
 import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'
 import { videoPlayer } from 'vue-video-player'
@@ -56,8 +57,8 @@ export default {
       video_request = await ruku.get({url :this.$store.state.host + '/videoid',query :{id:this.$route.query.id} });
       if(video_request.success){
         this.video = video_request.data
-        let thumb_url = this.video.thumb_url.split('\/')[0] == 'public' ? this.$store.state.host + '/' + this.video.thumb_url.split('\/').splice(1).join('/') : this.video.thumb_url
-        let url = this.video.url.split('\/')[0] == 'public' ? this.$store.state.host + '/' + this.video.url.split('\/').splice(1).join('/') : this.video.url
+        let thumb_url = dealPath(this.$store.state.host,this.video.thumb_url)
+        let url = dealPath(this.$store.state.host,this.video.url) 
         this.videoOptions.sources[0].src = url
         this.videoOptions.poster = thumb_url
       }

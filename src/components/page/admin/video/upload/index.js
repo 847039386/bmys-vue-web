@@ -62,7 +62,7 @@ export default {
       return info;
     },
     router_saveVideo(params){
-      this.$store.commit('router',{ path:'/create_video', query :{ type :'create' ,url : params.row.url ,vcurl_id:params.row._id } })
+      this.$store.commit('router',{ path:'/video_save', query :{ type :'create' ,url : params.row.url ,vcurl_id:params.row._id } })
     }
   },
   async created(){

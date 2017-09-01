@@ -27,6 +27,7 @@
 </style>
 
 <script>
+  import { dealPath } from '@/util/util'
   export default {
     props : {
       id :{type: String},
@@ -49,7 +50,7 @@
       }
     },
     created(){
-      this.ims = this.$store.state.host + '/' + this.img.split('\\').splice(1).join('/')
+      this.ims = dealPath(this.$store.state.host,this.img)
       this.time = new Date(this.createAt).toLocaleString()
     }
   }

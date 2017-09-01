@@ -1,4 +1,5 @@
 import ruku from  '@/util/ruku'
+import { dealPath } from '@/util/util'
 import Comments from  '@/dataTable/comments'
 export default {
   methods :{
@@ -48,8 +49,8 @@ export default {
     let video_request = await ruku.get({url :this.$store.state.host + '/videoid',query :{id:this.$route.query.id} });
     if(video_request.success){
       let video = video_request.data;
-      video_request.data.n_thumb_url = video.thumb_url.split('\/')[0] == 'public' ? this.$store.state.host + '/' + video.thumb_url.split('\/').splice(1).join('/') : video.thumb_url
-      video_request.data.n_url = video.url.split('\/')[0] == 'public' ? this.$store.state.host + '/' + video.url.split('\/').splice(1).join('/') : video.url
+      video_request.data.n_thumb_url = dealPath(this.$store.state.host,video.thumb_url)
+      video_request.data.n_url = dealPath(this.$store.state.host,video.url)
       this.video = video_request.data
     }
     await this.pageTurning(1);
