@@ -33,7 +33,7 @@
 
 <script>
   import ruku from  '@/util/ruku.js'
-  import cardVideo from '../../common/cardVideo'
+  import cardVideo from '../../common/CardVideo'
   export default {
     components : {
       cardVideo,
