@@ -18,7 +18,9 @@ export default {
            old_tag.forEach((t) => {
              new_tags.push(t.name)
            })
-           item.thumb_url_g = item.thumb_url.split('\\')[0] == 'public' ? store.state.host + '/' + item.thumb_url.split('\\').splice(1).join('/') : item.thumb_url
+
+           item.thumb_url_g = item.thumb_url.split('\/')[0] == 'public' ? store.state.host + '/' + item.thumb_url.split('\/').splice(1).join('/') : item.thumb_url
+             console.log(item.thumb_url_g)
            item.create_at =  new Date(item.create_at).toLocaleString()
            item.tag_g = new_tags.join(' / ')
          })

@@ -1,6 +1,6 @@
 export default {
   debug : true,
-  host : 'http://192.168.1.66:3000',
+  host : 'http://101.201.73.135:3333',
   ModelPermission :null,    //这个属性是当前模块的权限。配合verifyAdmin使用。
   uploads : [],
   new_uploads :[],
